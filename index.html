@@ -1,223 +1,582 @@
-export default function HomeTutorAcademyWebsite() {
-  const pages = {
-    home: {
-      title: "Affordable structured tutoring from home",
-      content: (
-        <>
-          <section className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <div className="mb-4 inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-sm text-amber-800">
-                GCSE Maths available now • More subjects planned
-              </div>
-              <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight text-slate-950">
-                Affordable GCSE Maths support without the cost of weekly tutoring
-              </h1>
-              <p className="mb-6 text-lg leading-8 text-slate-600">
-                Home Tutor Academy provides structured, step-by-step lessons that help students understand maths, build confidence, and improve exam performance — all from home.
-              </p>
-              <p className="mb-8 text-lg leading-8 text-slate-600">
-                Starting with GCSE Maths, Home Tutor Academy is being built to grow into a wider learning system across multiple subjects and age groups over time.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="#trial" className="rounded-2xl bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-slate-800">
-                  Try the free lesson
-                </a>
-                <a href="#pricing" className="rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50">
-                  View pricing
-                </a>
-              </div>
-              <div className="mt-8 text-sm text-slate-500">
-                Created by a qualified teacher. Tested with real students.
-              </div>
-            </div>
-            <div className="grid gap-4">
-              <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-                <div className="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500">What a lesson includes</div>
-                <div className="space-y-3 text-sm text-slate-700">
-                  <div className="rounded-2xl border bg-slate-50 p-4"><span className="font-semibold">Teach:</span> Clear explanation before students are expected to work independently.</div>
-                  <div className="rounded-2xl border bg-slate-50 p-4"><span className="font-semibold">Model:</span> Worked examples with step-by-step thinking and method choice.</div>
-                  <div className="rounded-2xl border bg-slate-50 p-4"><span className="font-semibold">Guide:</span> One question at a time with feedback and correction.</div>
-                  <div className="rounded-2xl border bg-slate-50 p-4"><span className="font-semibold">Apply:</span> Fluency, reasoning, and problem solving built into every lesson.</div>
-                </div>
-              </div>
-              <div className="rounded-[2rem] bg-gradient-to-br from-slate-900 to-slate-700 p-8 text-white shadow-sm">
-                <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-slate-300">Current offer</div>
-                <div className="mb-3 text-2xl font-bold">Free percentages trial lesson</div>
-                <p className="text-sm leading-7 text-slate-200">
-                  A focused GCSE Maths sample lesson designed to show how the full programme teaches, guides, and stretches students.
-                </p>
-              </div>
-            </div>
-          </section>
-        </>
-      ),
-    },
-    trial: {
-      title: "Free trial",
-      content: (
-        <section className="max-w-4xl">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-slate-950">Get the free trial lesson</h1>
-          <p className="mb-6 text-lg leading-8 text-slate-600">
-            The free trial is designed to show parents exactly how Home Tutor Academy works. It is not just a worksheet or a short demo. It is a structured lesson that teaches clearly, guides students step by step, and shows how the full system builds understanding.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Tutor Academy</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --line: #e5e7eb;
+      --primary: #0f172a;
+      --primary-hover: #1e293b;
+      --accent-bg: #fef3c7;
+      --accent-text: #92400e;
+      --soft: #f8fafc;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.1;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 14px;
+      background: var(--accent-bg);
+      color: var(--accent-text);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      margin: 0 0 20px;
+      font-size: 52px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-secondary:hover {
+      background: #f9fafb;
+    }
+
+    .trust {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card + .card {
+      margin-top: 18px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-item {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .mini-item strong {
+      color: var(--text);
+    }
+
+    .section {
+      padding: 70px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 38px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      font-size: 19px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .list li {
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 44px;
+      font-weight: 800;
+      margin: 10px 0 16px;
+      line-height: 1;
+    }
+
+    .label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .dark {
+      background: linear-gradient(135deg, #0f172a, #334155);
+      color: white;
+      border: none;
+    }
+
+    .dark p,
+    .dark li,
+    .dark .label {
+      color: rgba(255,255,255,0.84);
+    }
+
+    .faq-item {
+      margin-bottom: 16px;
+    }
+
+    .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-box {
+      background: var(--primary);
+      color: white;
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box p {
+      color: rgba(255,255,255,0.85);
+      font-size: 18px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .contact-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 38px;
+      }
+
+      .section h2 {
+        font-size: 32px;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <h1>Home Tutor Academy</h1>
+        <p>Structured online tutoring support from home</p>
+      </div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#trial">Free trial</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#about">About us</a>
+        <a href="#contact">Contact us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">GCSE Maths available now • More subjects planned</div>
+          <h2>Affordable GCSE Maths support without the cost of weekly tutoring</h2>
+          <p>
+            Home Tutor Academy provides structured, step-by-step lessons that help students understand maths, build confidence, and improve exam performance — all from home.
           </p>
-          <p className="mb-8 text-lg leading-8 text-slate-600">
-            In the future, this page should use a proper form so families can leave basic details before accessing the trial. For now, this section can direct them to the trial link after they enquire.
+          <p>
+            Starting with GCSE Maths, Home Tutor Academy is being built to grow into a wider learning system across multiple subjects and age groups over time.
           </p>
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-            <div className="mb-4 text-xl font-semibold">What the trial includes</div>
-            <ul className="space-y-3 text-slate-700">
-              <li>• A structured GCSE Maths sample lesson</li>
-              <li>• Clear teaching before practice</li>
-              <li>• Guided support one step at a time</li>
-              <li>• Independent questions with reasoning</li>
-              <li>• A proper sense of how the full programme works</li>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#trial">Try the free lesson</a>
+            <a class="btn btn-secondary" href="#pricing">View pricing</a>
+          </div>
+          <div class="trust">Created by a qualified teacher. Tested with real students.</div>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>What a lesson includes</h3>
+            <div class="mini-list">
+              <div class="mini-item"><strong>Teach:</strong> clear explanation before students are expected to work independently.</div>
+              <div class="mini-item"><strong>Model:</strong> worked examples with step-by-step thinking and method choice.</div>
+              <div class="mini-item"><strong>Guide:</strong> one question at a time with feedback and correction.</div>
+              <div class="mini-item"><strong>Apply:</strong> fluency, reasoning, and problem solving built into every lesson.</div>
+            </div>
+          </div>
+
+          <div class="card dark">
+            <div class="label">Current offer</div>
+            <h3>Free percentages trial lesson</h3>
+            <p>
+              A focused GCSE Maths sample lesson designed to show how the full programme teaches, guides, and stretches students.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trial" class="section">
+      <div class="container">
+        <h2>Get the free trial lesson</h2>
+        <p class="section-intro">
+          The free trial is designed to show parents exactly how Home Tutor Academy works. It is not just a worksheet or a short demo. It is a structured lesson that teaches clearly, guides students step by step, and shows how the full system builds understanding.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>What the trial includes</h3>
+            <ul class="list">
+              <li>One structured GCSE Maths sample lesson</li>
+              <li>Clear teaching before practice begins</li>
+              <li>Guided support one step at a time</li>
+              <li>Independent questions with reasoning</li>
+              <li>A proper sense of how the full programme works</li>
             </ul>
-            <a href="https://chatgpt.com/g/g-69d40eb490448191953dfdb49d6d6b80-home-tutor-academy-trial-lesson-percentages" target="_blank" rel="noreferrer" className="mt-8 inline-block rounded-2xl bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-slate-800">
-              Start free trial
-            </a>
-          </div>
-        </section>
-      ),
-    },
-    pricing: {
-      title: "Pricing",
-      content: (
-        <section className="max-w-5xl">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-slate-950">Pricing</h1>
-          <p className="mb-10 text-lg leading-8 text-slate-600">
-            Clear pricing matters. Home Tutor Academy is being built as an affordable alternative to ongoing private tuition, especially for families who want structured support but cannot justify traditional weekly tutoring costs.
-          </p>
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-slate-500">Trial</div>
-              <div className="mb-4 text-4xl font-bold text-slate-950">Free</div>
-              <p className="mb-6 text-slate-600">A focused sample lesson to show how the system works before you commit.</p>
-              <ul className="space-y-3 text-slate-700">
-                <li>• One structured sample lesson</li>
-                <li>• GCSE Maths focus</li>
-                <li>• Step-by-step teaching</li>
-                <li>• Ideal for first-time users</li>
-              </ul>
-            </div>
-            <div className="rounded-[2rem] bg-gradient-to-br from-slate-900 to-slate-700 p-8 text-white shadow-sm">
-              <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-slate-300">Full GCSE Maths programme</div>
-              <div className="mb-4 text-4xl font-bold">£4.99</div>
-              <p className="mb-6 text-slate-200">Affordable access to the full structured programme, designed as a lower-cost alternative to regular tutoring.</p>
-              <ul className="space-y-3 text-slate-100">
-                <li>• Structured lesson sequence</li>
-                <li>• Reasoning and notebook work built in</li>
-                <li>• Exam-style questions included</li>
-                <li>• Future lesson expansion planned</li>
-              </ul>
-              <a href="mailto:simondavis1979@live.co.uk?subject=Home%20Tutor%20Academy%20-%20Full%20Programme" className="mt-8 inline-block rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-slate-950 shadow-sm hover:bg-slate-100">
-                Buy the programme
-              </a>
+            <div class="button-row">
+              <a class="btn btn-primary" href="https://chatgpt.com/g/g-69d40eb490448191953dfdb49d6d6b80-home-tutor-academy-trial-lesson-percentages" target="_blank">Start free trial</a>
             </div>
           </div>
-        </section>
-      ),
-    },
-    faq: {
-      title: "FAQ",
-      content: (
-        <section className="max-w-5xl">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-slate-950">Frequently asked questions</h1>
-          <div className="grid gap-4">
-            {[
-              ["What is Home Tutor Academy?", "Home Tutor Academy is a structured online tutoring system designed to guide students through lessons step by step, helping them build understanding and confidence from home."],
-              ["Is this live tutoring?", "No. It is a structured interactive system built to feel more like a guided tutoring session than a simple question generator."],
-              ["What subject is available now?", "GCSE Maths is the current focus, with more subjects planned in future."],
-              ["How does the free trial work?", "The free trial gives you access to a structured sample lesson so you can see how the teaching style and lesson flow work before buying the full programme."],
-              ["Who is it for?", "It is designed for families who want structured support at home without the cost of traditional weekly tutoring."],
-              ["Will more subjects be added?", "Yes. The long-term plan is to expand into more subjects and age ranges over time."],
-            ].map(([q, a]) => (
-              <div key={q} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="mb-2 font-semibold text-slate-950">{q}</div>
-                <div className="text-sm leading-7 text-slate-600">{a}</div>
-              </div>
-            ))}
+
+          <div class="card">
+            <h3>Why start with the trial?</h3>
+            <p>
+              The trial gives families a chance to see whether the structure, teaching style, and level of support are a good fit before paying for the full programme.
+            </p>
+            <p>
+              It also shows the difference between random question practice and a properly sequenced lesson that explains, models, guides, and then checks understanding.
+            </p>
           </div>
-        </section>
-      ),
-    },
-    about: {
-      title: "About us",
-      content: (
-        <section className="max-w-5xl">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-slate-950">About Home Tutor Academy</h1>
-          <p className="mb-6 text-lg leading-8 text-slate-600">
-            Home Tutor Academy was created to offer families a more affordable way to access structured academic support from home.
-          </p>
-          <p className="mb-6 text-lg leading-8 text-slate-600">
-            Built by a qualified teacher, the system is designed to feel more like a real tutoring session than a generic chatbot. Lessons focus on clear teaching, guided practice, reasoning, notebook work, and confidence building.
-          </p>
-          <p className="mb-8 text-lg leading-8 text-slate-600">
-            The aim is simple: make high-quality structured support more accessible to families who are priced out of regular tutoring.
-          </p>
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-            <div className="mb-4 text-xl font-semibold">What makes it different?</div>
-            <ul className="space-y-3 text-slate-700">
-              <li>• Clear teaching before students work independently</li>
-              <li>• Notebook work and reasoning built into lessons</li>
-              <li>• Structured lesson flow: teach, model, guide, apply</li>
-              <li>• Designed with affordability and accessibility in mind</li>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="container">
+        <h2>Pricing</h2>
+        <p class="section-intro">
+          Clear pricing matters. Home Tutor Academy is being built as an affordable alternative to ongoing private tuition, especially for families who want structured support but cannot justify traditional weekly tutoring costs.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="label">Trial</div>
+            <div class="price">£0</div>
+            <p>A focused sample lesson to show how the system works before you commit.</p>
+            <ul class="list">
+              <li>One structured sample lesson</li>
+              <li>GCSE Maths focus</li>
+              <li>Step-by-step teaching</li>
+              <li>Ideal for first-time users</li>
             </ul>
           </div>
-        </section>
-      ),
-    },
-    contact: {
-      title: "Contact us",
-      content: (
-        <section className="max-w-4xl">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-slate-950">Contact us</h1>
-          <p className="mb-8 text-lg leading-8 text-slate-600">
+
+          <div class="card dark">
+            <div class="label">Full GCSE Maths programme</div>
+            <div class="price">£4.99</div>
+            <p>Affordable access to the full structured programme, designed as a lower-cost alternative to regular tutoring.</p>
+            <ul class="list">
+              <li>Structured lesson sequence</li>
+              <li>Reasoning and notebook work built in</li>
+              <li>Exam-style questions included</li>
+              <li>Future lesson expansion planned</li>
+            </ul>
+            <div class="button-row">
+              <a class="btn btn-secondary" href="mailto:simondavis1979@live.co.uk?subject=Home%20Tutor%20Academy%20-%20Full%20Programme">Buy the programme</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <h2>Frequently asked questions</h2>
+
+        <div class="grid-2">
+          <div class="card faq-item">
+            <h3>What is Home Tutor Academy?</h3>
+            <p>Home Tutor Academy is a structured online tutoring system designed to guide students through lessons step by step, helping them build understanding and confidence from home.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Is this live tutoring?</h3>
+            <p>No. It is a structured interactive system built to feel more like a guided tutoring session than a simple question generator.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>What subject is available now?</h3>
+            <p>GCSE Maths is the current focus, with more subjects planned in future.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>How does the free trial work?</h3>
+            <p>The free trial gives you access to a structured sample lesson so you can see how the teaching style and lesson flow work before buying the full programme.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Who is it for?</h3>
+            <p>It is designed for families who want structured support at home without the cost of traditional weekly tutoring.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Will more subjects be added?</h3>
+            <p>Yes. The long-term plan is to expand into more subjects and age ranges over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Home Tutor Academy</h2>
+        <p class="section-intro">
+          Home Tutor Academy was created to offer families a more affordable way to access structured academic support from home.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <p>
+              Built by a qualified teacher, the system is designed to feel more like a real tutoring session than a generic chatbot. Lessons focus on clear teaching, guided practice, reasoning, notebook work, and confidence building.
+            </p>
+            <p>
+              The aim is simple: make high-quality structured support more accessible to families who are priced out of regular tutoring.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>What makes it different?</h3>
+            <ul class="list">
+              <li>Clear teaching before students work independently</li>
+              <li>Notebook work and reasoning built into lessons</li>
+              <li>Structured lesson flow: teach, model, guide, apply</li>
+              <li>Designed with affordability and accessibility in mind</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Contact us</h2>
+          <p>
             Want the free trial, the full programme, or more information? Get in touch using the details below.
           </p>
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="mb-2 text-lg font-semibold">Email</div>
-              <div className="text-slate-700">simondavis1979@live.co.uk</div>
+
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>Email</h3>
+              <p>simondavis1979@live.co.uk</p>
             </div>
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="mb-2 text-lg font-semibold">Best first step</div>
-              <div className="text-slate-700">Start with the free trial lesson to see how the system works before buying.</div>
+
+            <div class="contact-card">
+              <h3>Best first step</h3>
+              <p>Start with the free trial lesson to see how the system works before buying.</p>
             </div>
           </div>
-        </section>
-      ),
-    },
-  };
-
-  const current = typeof window !== "undefined" ? window.location.hash.replace("#", "") || "home" : "home";
-  const page = pages[current] || pages.home;
-
-  return (
-    <div className="min-h-screen bg-stone-50 text-slate-900">
-      <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div>
-            <div className="text-2xl font-bold tracking-tight text-slate-950">Home Tutor Academy</div>
-            <div className="text-sm text-slate-500">Structured online tutoring support from home</div>
-          </div>
-          <nav className="hidden gap-6 text-sm md:flex">
-            <a href="#home" className="hover:text-slate-950">Home</a>
-            <a href="#trial" className="hover:text-slate-950">Free trial</a>
-            <a href="#pricing" className="hover:text-slate-950">Pricing</a>
-            <a href="#faq" className="hover:text-slate-950">FAQ</a>
-            <a href="#about" className="hover:text-slate-950">About us</a>
-            <a href="#contact" className="hover:text-slate-950">Contact us</a>
-          </nav>
         </div>
-      </header>
+      </div>
+    </section>
+  </main>
 
-      <main className="mx-auto max-w-6xl px-6 py-20">{page.content}</main>
-
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-slate-500">
-          © Home Tutor Academy • Affordable structured academic support from home
-        </div>
-      </footer>
+  <footer>
+    <div class="container">
+      © Home Tutor Academy • Affordable structured academic support from home
     </div>
-  );
-}
+  </footer>
+
+</body>
+</html>

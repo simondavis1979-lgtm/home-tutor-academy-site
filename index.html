@@ -1,689 +1,765 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home Tutor Academy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Tutor Academy</title>
+  <style>
+    :root {
+      --bg: #f6f3ed;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --primary: #0b1530;
+      --primary-hover: #162247;
+      --accent-bg: #fef3c7;
+      --accent-text: #92400e;
+      --soft: #f8fafc;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      --radius: 24px;
+    }
 
-<style>
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#f7f4ee;
-  color:#111827;
-}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-.container {
-  max-width:1100px;
-  margin:0 auto;
-  padding:20px;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid #e5e7eb;
-  padding:16px 0;
-}
+    a { color: inherit; }
 
-.logo-wrap {
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-.logo-wrap img {
-  width:50px;
-  height:50px;
-  object-fit:contain;
-}
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
 
-nav a {
-  margin-left:15px;
-  text-decoration:none;
-  color:#4b5563;
-  font-weight:bold;
-}
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 16px 0;
+    }
 
-nav a:hover {
-  color:#000;
-}
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-.hero {
-  padding:50px 0;
-}
+    .site-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
 
-.hero h1 {
-  font-size:42px;
-  margin-bottom:15px;
-}
+    .brand h1 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.1;
+    }
 
-.hero p {
-  font-size:18px;
-  color:#4b5563;
-}
+    .brand p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
 
-.btn {
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 20px;
-  background:#0f172a;
-  color:white;
-  text-decoration:none;
-  border-radius:10px;
-}
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 14px;
+    }
 
-.btn:hover {
-  background:#1e293b;
-}
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 700;
+    }
 
-.card {
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  margin-top:20px;
-  border:1px solid #e5e7eb;
-}
+    .nav a:hover { color: var(--text); }
 
-.dark {
-  background:#0f172a;
-  color:white;
-}
+    .hero {
+      padding: 72px 0 56px;
+    }
 
-.section {
-  padding:60px 0;
-  border-top:1px solid #e5e7eb;
-}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
 
-.price {
-  font-size:40px;
-  font-weight:bold;
-}
+    .pill {
+      display: inline-block;
+      padding: 8px 14px;
+      background: var(--accent-bg);
+      color: var(--accent-text);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
 
-.old-price {
-  text-decoration:line-through;
-  opacity:0.6;
-  margin-right:10px;
-  font-size:0.7em;
-}
+    .hero h2 {
+      margin: 0 0 20px;
+      font-size: 50px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
 
-input, select, textarea {
-  width:100%;
-  padding:12px;
-  margin-top:5px;
-  border-radius:10px;
-  border:1px solid #e5e7eb;
-}
+    .hero p {
+      font-size: 19px;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
 
-label {
-  display:block;
-  margin-top:15px;
-  font-weight:bold;
-}
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
 
-footer {
-  border-top:1px solid #e5e7eb;
-  padding:20px;
-  text-align:center;
-  color:#4b5563;
-}
-</style>
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover { background: var(--primary-hover); }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-secondary:hover { background: #f8fafc; }
+
+    .trust {
+      margin-top: 22px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card + .card { margin-top: 18px; }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-item {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .mini-item strong { color: var(--text); }
+
+    .section {
+      padding: 68px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 38px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro {
+      max-width: 860px;
+      font-size: 19px;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .list li { margin-bottom: 10px; }
+
+    .label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .dark {
+      background: linear-gradient(135deg, #09142f, #1e2b53);
+      color: white;
+      border: none;
+    }
+
+    .dark p,
+    .dark li,
+    .dark .label {
+      color: rgba(255,255,255,0.86);
+    }
+
+    .price {
+      font-size: 44px;
+      font-weight: 800;
+      margin: 8px 0 16px;
+      line-height: 1;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      opacity: 0.65;
+      margin-right: 12px;
+      font-size: 0.7em;
+      vertical-align: middle;
+    }
+
+    .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: white;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .helper {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .contact-box {
+      background: var(--primary);
+      color: white;
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box p {
+      color: rgba(255,255,255,0.85);
+      font-size: 18px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .contact-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .copy-email {
+      margin-top: 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      word-break: break-word;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-2,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 { font-size: 38px; }
+      .section h2 { font-size: 32px; }
+      .nav { display: none; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand-wrap">
+        <img src="logo.png" alt="Home Tutor Academy logo" class="site-logo">
+        <div class="brand">
+          <h1>Home Tutor Academy</h1>
+          <p>Structured online tutoring support from home</p>
+        </div>
+      </div>
 
-<header>
-  <div class="logo-wrap">
-    <img src="logo.png">
-    <div>
-      <strong>Home Tutor Academy</strong><br>
-      <small>Structured tutoring from home</small>
+      <nav class="nav">
+        <a href="#trial">Free trial</a>
+        <a href="#block1">Block 1</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#about">About us</a>
+        <a href="#contact">Contact us</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <nav>
-    <a href="#trial">Free trial</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-  </nav>
-</header>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">Current offer: Block 1 now £4.99</div>
+          <h2>Affordable GCSE Maths support for students who are struggling, losing confidence, or falling behind — without the cost of weekly tutoring</h2>
 
-<section class="hero">
-  <h1>Affordable GCSE Maths support for students who are struggling, losing confidence, or falling behind — without the cost of weekly tutoring</h1>
+          <p>
+            Home Tutor Academy provides structured, step-by-step GCSE Maths lessons that do not just give answers — they teach students how to think, apply methods, and improve exam performance.
+          </p>
 
-  <p><p>
-Home Tutor Academy provides structured, step-by-step GCSE Maths lessons that don’t just give answers — they teach students how to think, apply methods, and succeed in exams.
-</p>
+          <p>
+            Powered by AI, students can ask questions freely, revisit explanations, and work through problems at their own pace without feeling judged or embarrassed for needing repeated help.
+          </p>
 
-<p>
-Powered by AI, students can ask questions freely, revisit explanations, and work through problems at their own pace — without feeling judged or rushed like they might in a classroom.
-</p>
+          <p>
+            Lessons are fully interactive and can be used with either voice or text, making them flexible and accessible for different learners.
+          </p>
 
-<p>
-Each lesson is fully interactive and adapts to the student. It can be used with voice or text, making it flexible, accessible, and easy to use at home.
-</p>
+          <p>
+            No technical knowledge is needed. All you need is a free ChatGPT account and a notebook for jottings and working out.
+          </p>
 
-<p>
-No technical knowledge is needed. All you need is a free ChatGPT account and a notebook — everything else is guided step by step.
-</p>
-  </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#trial">Get the free trial</a>
+            <a class="btn btn-secondary" href="#pricing">View Block 1 pricing</a>
+          </div>
 
-  <a class="btn" href="#trial"><p><strong>No payment. No commitment. See how it works first.</strong></p></a>
+          <div class="trust">Created by a qualified teacher. Tested with real students.</div>
+        </div>
 
-</section>
+        <div>
+          <div class="card">
+            <h3>What a lesson includes</h3>
+            <div class="mini-list">
+              <div class="mini-item"><strong>Teach:</strong> clear explanation before students are expected to work independently.</div>
+              <div class="mini-item"><strong>Model:</strong> worked examples with step-by-step thinking and method choice.</div>
+              <div class="mini-item"><strong>Guide:</strong> one question at a time with feedback and correction.</div>
+              <div class="mini-item"><strong>Apply:</strong> fluency, reasoning, and problem solving built into every lesson.</div>
+            </div>
+          </div>
 
-<div class="card dark">
-  <div class="label">Introductory offer</div>
-<h3>Block 1 now £4.99</h3>
-<p>
-  Start with Block 1: Core Number Foundations. A structured first block designed to rebuild confidence, strengthen weak number skills, and prepare students for harder GCSE topics.
-</p>
-</div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home Tutor Academy</title>
+          <div class="card dark">
+            <div class="label">Introductory offer</div>
+            <h3>Block 1 now £4.99</h3>
+            <p>
+              Start with Block 1: Core Number Foundations. A structured first block designed to rebuild confidence, strengthen weak number skills, and prepare students for harder GCSE topics.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<style>
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#f7f4ee;
-  color:#111827;
-}
+    <section class="section">
+      <div class="container">
+        <h2>Why it works</h2>
 
-.container {
-  max-width:1100px;
-  margin:0 auto;
-  padding:20px;
-}
+        <div class="card">
+          <ul class="list">
+            <li><strong>No more “I don’t get it”:</strong> students can ask questions again and again without pressure.</li>
+            <li><strong>Fixes weak foundations:</strong> builds the core skills many students are missing.</li>
+            <li><strong>Feels like real tutoring:</strong> step-by-step teaching, not random questions.</li>
+            <li><strong>Builds confidence fast:</strong> students start to understand, not just copy.</li>
+            <li><strong>Much lower cost:</strong> a real alternative to £30–£40 per session tutors.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid #e5e7eb;
-  padding:16px 0;
-}
+    <section id="trial" class="section">
+      <div class="container">
+        <h2>Get the free trial lesson</h2>
+        <p class="section-intro">
+          No payment. No commitment. See how it works first.
+        </p>
+        <p class="section-intro">
+          This is not just a sample worksheet. The free trial is a fully structured GCSE Maths lesson designed to show exactly how Home Tutor Academy works in practice.
+        </p>
 
-.logo-wrap {
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
+        <div class="grid-2">
+          <div class="card">
+            <h3>Request free trial access</h3>
 
-.logo-wrap img {
-  width:50px;
-  height:50px;
-  object-fit:contain;
-}
+            <form action="https://formsubmit.co/learn@hometutoracademy.co.uk" method="POST">
+              <input type="hidden" name="_subject" value="New Home Tutor Academy free trial request">
+              <input type="hidden" name="_next" value="https://www.hometutoracademy.co.uk/thanks.html">
+              <input type="hidden" name="_template" value="table">
 
-nav a {
-  margin-left:15px;
-  text-decoration:none;
-  color:#4b5563;
-  font-weight:bold;
-}
+              <div class="form-grid">
+                <div>
+                  <label for="parent-name">Parent name</label>
+                  <input id="parent-name" type="text" name="Parent Name" required>
+                </div>
 
-nav a:hover {
-  color:#000;
-}
+                <div>
+                  <label for="email">Email address</label>
+                  <input id="email" type="email" name="Email" required>
+                </div>
 
-.hero {
-  padding:50px 0;
-}
+                <div>
+                  <label for="year-group">Child's school year</label>
+                  <input id="year-group" type="text" name="Year Group" placeholder="e.g. Year 10" required>
+                </div>
 
-.hero h1 {
-  font-size:42px;
-  margin-bottom:15px;
-}
+                <div>
+                  <label for="need">Main area of need</label>
+                  <select id="need" name="Main Need" required>
+                    <option value="">Select one</option>
+                    <option>Confidence</option>
+                    <option>Weak number skills</option>
+                    <option>Exam technique</option>
+                    <option>Careless mistakes</option>
+                    <option>General GCSE Maths support</option>
+                  </select>
+                </div>
 
-.hero p {
-  font-size:18px;
-  color:#4b5563;
-}
+                <div>
+                  <label for="message">Anything useful for us to know?</label>
+                  <textarea id="message" name="Additional Notes" placeholder="Optional"></textarea>
+                </div>
 
-.btn {
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 20px;
-  background:#0f172a;
-  color:white;
-  text-decoration:none;
-  border-radius:10px;
-}
+                <div>
+                  <button class="btn btn-primary" type="submit">Continue to free trial</button>
+                </div>
+              </div>
+            </form>
 
-.btn:hover {
-  background:#1e293b;
-}
+            <div class="helper">
+              On the first test submission, FormSubmit may send a confirmation email to activate the form. After that, submissions should come straight through.
+            </div>
+          </div>
 
-.card {
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  margin-top:20px;
-  border:1px solid #e5e7eb;
-}
+          <div class="card">
+            <h3>What the trial includes</h3>
+            <ul class="list">
+              <li>One structured GCSE Maths sample lesson</li>
+              <li>Clear teaching before practice begins</li>
+              <li>Guided support one step at a time</li>
+              <li>Independent questions with reasoning</li>
+              <li>A proper sense of how the full system works</li>
+            </ul>
+            <p>
+              Students are taught step by step, guided through examples, and then challenged with independent questions — much closer to a real tutoring session than a worksheet or random quiz.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-.dark {
-  background:#0f172a;
-  color:white;
-}
+    <section id="block1" class="section">
+      <div class="container">
+        <h2>What’s included in Block 1</h2>
+        <p class="section-intro">
+          Most students struggle with GCSE Maths because their core number skills are not secure. Block 1 fixes this.
+        </p>
 
-.section {
-  padding:60px 0;
-  border-top:1px solid #e5e7eb;
-}
+        <div class="card">
+          <ul class="list">
+            <li><strong>Place value and number understanding</strong> — so students can read, compare, and work confidently with numbers.</li>
+            <li><strong>Decimals</strong> — building fluency and linking them clearly to fractions and percentages.</li>
+            <li><strong>Fractions, decimals, and percentages conversion</strong> — helping students move confidently between forms.</li>
+            <li><strong>Efficient percentage methods</strong> — including using 10%, 5%, 1%, and key shortcuts like 50%, 25%, and 20%.</li>
+            <li><strong>Application and problem solving</strong> — so students can use these skills in real GCSE-style questions, not just routine practice.</li>
+          </ul>
 
-.price {
-  font-size:40px;
-  font-weight:bold;
-}
+          <p>
+            The goal is not just to get answers right. It is to build secure methods, deeper understanding, and the confidence to tackle more difficult work later.
+          </p>
+        </div>
+      </div>
+    </section>
 
-.old-price {
-  text-decoration:line-through;
-  opacity:0.6;
-  margin-right:10px;
-  font-size:0.7em;
-}
+    <section id="pricing" class="section">
+      <div class="container">
+        <h2>Block 1 pricing</h2>
+        <p class="section-intro">
+          Most GCSE tutors charge £30–£40 per session. Home Tutor Academy gives structured, guided support for a fraction of the cost.
+        </p>
 
-input, select, textarea {
-  width:100%;
-  padding:12px;
-  margin-top:5px;
-  border-radius:10px;
-  border:1px solid #e5e7eb;
-}
+        <div class="grid-2">
+          <div class="card">
+            <div class="label">Free trial</div>
+            <div class="price">Free</div>
+            <p>This gives you a chance to see how the teaching style and lesson structure work before spending anything.</p>
+            <ul class="list">
+              <li>One structured sample lesson</li>
+              <li>GCSE Maths focus</li>
+              <li>Step-by-step teaching</li>
+              <li>No payment and no commitment</li>
+            </ul>
+          </div>
 
-label {
-  display:block;
-  margin-top:15px;
-  font-weight:bold;
-}
+          <div class="card dark">
+            <div class="label">Introductory offer</div>
+            <div class="price">
+              <span class="old-price">£9.99</span>
+              £4.99
+            </div>
 
-footer {
-  border-top:1px solid #e5e7eb;
-  padding:20px;
-  text-align:center;
-  color:#4b5563;
-}
-</style>
-</head>
+            <p><strong>Block 1: Core Number Foundations</strong></p>
+            <p>
+              This first block focuses on the key number skills that many students struggle with — the foundations needed for GCSE success.
+            </p>
 
-<body>
+            <ul class="list">
+              <li>Place value and number understanding</li>
+              <li>Decimals and links to fractions and percentages</li>
+              <li>Converting between fractions, decimals, and percentages</li>
+              <li>Finding percentages using 10%, 5%, and 1%</li>
+              <li>Applying skills in exam-style questions</li>
+            </ul>
 
-<div class="container">
+            <div class="button-row">
+              <a class="btn btn-secondary" href="mailto:learn@hometutoracademy.co.uk?subject=Home%20Tutor%20Academy%20-%20Block%201%20Enquiry">Buy Block 1</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<header>
-  <div class="logo-wrap">
-    <img src="logo.png">
-    <div>
-      <strong>Home Tutor Academy</strong><br>
-      <small>Structured tutoring from home</small>
+    <section id="faq" class="section">
+      <div class="container">
+        <h2>Frequently asked questions</h2>
+
+        <div class="grid-2">
+          <div class="card faq-item">
+            <h3>What is Home Tutor Academy?</h3>
+            <p>Home Tutor Academy is a structured online tutoring system designed to guide students through lessons step by step, helping them build understanding, confidence, and stronger GCSE Maths skills from home.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Is this live tutoring?</h3>
+            <p>No. It is a structured interactive system designed to feel more like a guided tutoring session than a simple question generator.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Is it powered by AI?</h3>
+            <p>Yes. The system is powered by AI, which allows students to ask questions freely, revisit steps, and work at their own pace without feeling judged for needing repeated help.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Can students use voice or text?</h3>
+            <p>Yes. Lessons are fully interactive and can be used with either voice or text, depending on what suits the student best.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>What do we need to use it?</h3>
+            <p>No technical knowledge is needed. Families just need a free ChatGPT account and a notebook for jottings and working out.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Who is Block 1 for?</h3>
+            <p>Block 1 is ideal for students who lack confidence, struggle with number skills, make careless mistakes, or find it hard to apply core methods in GCSE questions.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>What if my child finds maths stressful?</h3>
+            <p>Many students find it easier to ask questions and work through mistakes in this format because they can pause, repeat explanations, and try again without pressure.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Will this replace a tutor?</h3>
+            <p>For some families it may be a lower-cost alternative to regular tutoring. For others, it may work best as structured support alongside school learning.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>What happens after the free trial?</h3>
+            <p>If the trial feels like a good fit, you can buy Block 1 at the introductory price and continue with the structured programme from there.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Will more subjects be added?</h3>
+            <p>Yes. The long-term plan is to expand into more subjects and age ranges over time.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>Can ChatGPT make mistakes?</h3>
+            <p>Yes. Like any AI tool, ChatGPT can sometimes make mistakes. That is why Home Tutor Academy is structured carefully, tested in use, and designed around guided teaching rather than blind answer-giving.</p>
+          </div>
+
+          <div class="card faq-item">
+            <h3>What if we need help?</h3>
+            <p>You can contact Home Tutor Academy directly by email if you have questions about the trial, Block 1, or how the system works.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Home Tutor Academy</h2>
+        <p class="section-intro">
+          Home Tutor Academy was created to offer families a more affordable way to access structured academic support from home.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <p>
+              Built by a qualified teacher, the system is designed to feel more like a real tutoring session than a generic chatbot. Lessons focus on clear teaching, guided practice, reasoning, notebook work, and confidence building.
+            </p>
+            <p>
+              The aim is simple: make high-quality structured support more accessible to families who are priced out of regular tutoring.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>What makes it different?</h3>
+            <ul class="list">
+              <li>Clear teaching before students work independently</li>
+              <li>Notebook work and reasoning built into lessons</li>
+              <li>Structured lesson flow: teach, model, guide, apply</li>
+              <li>Designed with affordability and accessibility in mind</li>
+              <li>Interactive support through voice or text</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Contact us</h2>
+          <p>
+            Want the free trial, Block 1, or more information? Get in touch using the details below.
+          </p>
+
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>Email</h3>
+              <a class="btn btn-secondary" href="mailto:learn@hometutoracademy.co.uk?subject=Home%20Tutor%20Academy%20Enquiry">Email Home Tutor Academy</a>
+              <div class="copy-email">learn@hometutoracademy.co.uk</div>
+            </div>
+
+            <div class="contact-card">
+              <h3>Best first step</h3>
+              <p>Start with the free trial lesson to see how the system works before buying.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:20px;">
+      <div class="container">
+        <div class="card">
+          <h3>Important note</h3>
+          <p>
+            Home Tutor Academy is powered by ChatGPT. While it is designed to provide structured, high-quality support, AI can occasionally make mistakes. Students should still think carefully, show working, and use the system as guided support rather than unquestioned fact.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © Home Tutor Academy • Affordable structured academic support from home
     </div>
-  </div>
-
-  <nav>
-    <a href="#trial">Free trial</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>Affordable GCSE Maths support without the cost of tutoring</h1>
-
-  <p>
-  Home Tutor Academy provides structured, step-by-step lessons that build understanding, confidence, and exam performance — all from home.
-  </p>
-
-  <p>
-  Powered by AI, students can ask questions freely, revisit explanations, and learn without feeling judged.
-  </p>
-
-  <p>
-  Fully interactive — works with voice or text.
-  </p>
-
-  <p>
-  No technical knowledge needed. Just a free ChatGPT account and a notebook.
-  </p>
-
-  <a class="btn" href="#trial"><p><strong>No payment. No commitment. See how it works first.</strong></p></a>
-
-</section>
-
-<div class="card dark">
-  <strong>Introductory offer</strong>
-  <h2>Free percentages trial lesson</h2>
-  <p>See exactly how the system teaches, guides and builds confidence.</p>
-</div>
-
-  <section class="section">
-  <h2>Why it works</h2>
-
-  <div class="card">
-    <ul>
-      <li><strong>No more “I don’t get it”:</strong> Students can ask questions again and again without pressure.</li>
-      <li><strong>Fixes weak foundations:</strong> Builds the core skills many students are missing.</li>
-      <li><strong>Feels like real tutoring:</strong> Step-by-step teaching, not random questions.</li>
-      <li><strong>Builds confidence fast:</strong> Students start to understand, not just copy.</li>
-      <li><strong>Much lower cost:</strong> A real alternative to £30–£40 per session tutors.</li>
-    </ul>
-  </div>
-</section>
-<section id="trial" class="section">
-  <h2><p><strong>No payment. No commitment. See how it works first.</strong></p></h2>
-
- <p>
-This is not just a sample worksheet. The free trial is a fully structured GCSE Maths lesson designed to show exactly how Home Tutor Academy works in practice.
-</p>
-
-<p>
-Students are taught step-by-step, guided through examples, and then challenged with independent questions — just like a real tutoring session.
-</p>
-
-<p>
-By the end of the trial, you will clearly see how the system builds understanding, confidence, and exam skills.
-</p>
-
-  <div class="card">
-
-<form action="https://formsubmit.co/learn@hometutoracademy.co.uk" method="POST">
-
-<input type="hidden" name="_next" value="https://hometutoracademy.co.uk/thanks.html">
-
-<label>Parent Name</label>
-<input type="text" name="name" required>
-
-<label>Email</label>
-<input type="email" name="email" required>
-
-<label>Year Group</label>
-<input type="text" name="year" required>
-
-<label>Main Need</label>
-<select name="need">
-<option>Confidence</option>
-<option>Weak skills</option>
-<option>Exam technique</option>
-<option>General support</option>
-</select>
-
-<button class="btn" type="submit">Continue to free trial</button>
-
-</form>
-</div>
-
-<div class="card">
-  <h3>What is covered in Block 1</h3>
-
-  <p>
-  <p>
-Most students struggle with GCSE Maths because their core number skills are not secure.
-</p>
-
-<p>
-Block 1 fixes this.
-</p>
-
-<p>
-It focuses on the essential number skills that underpin GCSE Maths success.
-</p>
-  </p>
-
-  <ul>
-    <li>Place value and number understanding</li>
-    <li>Decimals and links to fractions and percentages</li>
-    <li>Converting between fractions, decimals, and percentages</li>
-    <li>Finding percentages using 10%, 5%, and 1%</li>
-    <li>Applying percentages in exam-style questions</li>
-  </ul>
-
-  <p>
-  The focus is on building understanding and confidence so students are ready for more advanced topics later.
-  </p>
-</div>
-  </div>
-</section>
-
-  <section class="section">
-  <h2>What’s included in Block 1</h2>
-
-  <p class="section-intro">
-    Block 1 focuses on the core number skills that many students are missing. These are the foundations that affect confidence, accuracy, and success across GCSE Maths.
-  </p>
-
-  <div class="card">
-    <ul class="list">
-      <li><strong>Place value and number understanding</strong> — so students can read, compare, and work confidently with numbers.</li>
-      <li><strong>Decimals</strong> — building fluency and linking them clearly to fractions and percentages.</li>
-      <li><strong>Fractions, decimals, and percentages conversion</strong> — helping students move confidently between forms.</li>
-      <li><strong>Efficient percentage methods</strong> — including using 10%, 5%, 1%, and key shortcuts like 50%, 25%, and 20%.</li>
-      <li><strong>Application and problem solving</strong> — so students can use these skills in real GCSE-style questions, not just routine practice.</li>
-    </ul>
-    <p>
-      The goal is not just to get answers right. It is to build secure methods, deeper understanding, and the confidence to tackle more difficult work later.
-    </p>
-  </div>
-</section>
-<section id="pricing" class="section">
-  <h2>Pricing</h2>
-
-  <div class="card">
-    <div class="price">Free</div>
-    <p>
-<p>
-Most GCSE tutors charge £30–£40 per session.
-</p>
-
-<p>
-Home Tutor Academy gives structured, guided support for a fraction of the cost — without sacrificing quality.
-</p>
-</p>
-
-<p>
-Instead of paying £30–£40 per session, families can access structured, high-quality lessons for a fraction of the cost.
-</p>
-  </div>
-
-  <div class="card dark">
-    <div class="price">
-      <span class="old-price">£9.99</span>
-      £4.99
-    </div>
-    <p>Full GCSE Maths programme</p>
-  </div>
-</section>
-
-<section id="faq" class="section">
-  <div class="container">
-    <h2>Frequently asked questions</h2>
-
-    <div class="grid-2">
-      <div class="card faq-item">
-        <h3>What is Home Tutor Academy?</h3>
-        <p>Home Tutor Academy is a structured online tutoring system designed to guide students through lessons step by step, helping them build understanding, confidence, and stronger GCSE maths skills from home.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>Is this live tutoring?</h3>
-        <p>No. It is a structured interactive system that is designed to feel more like a guided tutoring session than a simple question generator.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>Is it powered by AI?</h3>
-        <p>Yes. The system is powered by AI, which allows students to ask questions freely, revisit explanations, and work at their own pace without feeling judged for needing repeated help.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>Can students use voice or text?</h3>
-        <p>Yes. Lessons are fully interactive and can be used with either voice or text, depending on what suits the student best.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>What do we need to use it?</h3>
-        <p>No technical knowledge is needed. Families just need a free ChatGPT account and a notebook for jottings and working out.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>Who is Block 1 for?</h3>
-        <p>Block 1 is ideal for students who struggle with confidence, weak number skills, careless mistakes, or difficulty applying core maths methods in GCSE questions.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>What if my child finds maths stressful?</h3>
-        <p>Many students find it easier to ask questions and work through mistakes in this format because they can pause, repeat explanations, and try again without pressure.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>Will this replace a tutor?</h3>
-        <p>For some families it may be a lower-cost alternative to regular tutoring. For others, it may work best as structured support alongside school learning.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>What happens after the free trial?</h3>
-        <p>If the trial feels like a good fit, you can buy Block 1 at the introductory price and continue with the structured programme from there.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>Will more subjects be added?</h3>
-        <p>Yes. The long-term plan is to expand into more subjects and age ranges over time.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>Can ChatGPT ever make mistakes?</h3>
-        <p>Yes. Like any AI tool, ChatGPT can sometimes make mistakes. That is why Home Tutor Academy is structured carefully, tested in use, and designed around guided teaching rather than blind answer-giving.</p>
-      </div>
-
-      <div class="card faq-item">
-        <h3>What if we need help?</h3>
-        <p>You can contact Home Tutor Academy directly by email if you have questions about the trial, Block 1, or how the system works.</p>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<section class="section">
-  <div class="card dark">
-    <h2>Contact</h2>
-
-    <a class="btn" href="mailto:learn@hometutoracademy.co.uk">Email us</a>
-
-    <p>learn@hometutoracademy.co.uk</p>
-  </div>
-</section>
-
-  <section class="section" style="padding-top: 20px;">
-  <div class="container">
-    <div class="card">
-      <h3>Important note</h3>
-      <p>
-        Home Tutor Academy is powered by ChatGPT. While it is designed to provide structured, high-quality support, AI can occasionally make mistakes. Students should still think carefully, show working, and use the system as guided support rather than unquestioned fact.
-      </p>
-    </div>
-  </div>
-</section>
-<footer>
-© Home Tutor Academy
-</footer>
-
-</div>
-
-</body>
-</html>
-<section id="trial" class="section">
-  <h2><p><strong>No payment. No commitment. See how it works first.</strong></p></h2>
-
-  <p>Enter your details to access the lesson.</p>
-
-  <div class="card">
-
-<form action="https://formsubmit.co/learn@hometutoracademy.co.uk" method="POST">
-
-<input type="hidden" name="_next" value="https://hometutoracademy.co.uk/thanks.html">
-
-<label>Parent Name</label>
-<input type="text" name="name" required>
-
-<label>Email</label>
-<input type="email" name="email" required>
-
-<label>Year Group</label>
-<input type="text" name="year" required>
-
-<label>Main Need</label>
-<select name="need">
-<option>Confidence</option>
-<option>Weak skills</option>
-<option>Exam technique</option>
-<option>General support</option>
-</select>
-
-<button class="btn" type="submit">Continue to free trial</button>
-
-</form>
-
-  </div>
-</section>
-
-<section id="pricing" class="section">
-  <h2>Block 1 pricing</h2>
-
-  <div class="card">
-    <div class="price">Free</div>
-    <p>Trial lesson</p>
-  </div>
-
-  <div class="card dark">
-    <div class="price">
-      <span class="old-price">£9.99</span>
-      £4.99
-    </div>
-    <p>Full GCSE Maths programme</p>
-  </div>
-</section>
-
-<section id="faq" class="section">
-  <h2>FAQ</h2>
-
-  <div class="card">
-    <strong>Is it live tutoring?</strong>
-    <p>No — structured AI tutoring system</p>
-  </div>
-
-  <div class="card">
-    <strong>Do I need tech skills?</strong>
-    <p>No — just ChatGPT and a notebook</p>
-  </div>
-
-  <div class="card">
-    <strong>Will more subjects be added?</strong>
-    <p>Yes</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="card dark">
-    <h2>Contact</h2>
-
-    <a class="btn" href="mailto:learn@hometutoracademy.co.uk">Email us</a>
-
-    <p>learn@hometutoracademy.co.uk</p>
-  </div>
-</section>
-
-<footer>
-© Home Tutor Academy
-</footer>
-
-</div>
+  </footer>
 
 </body>
 </html>

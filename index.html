@@ -20,13 +20,8 @@
       --radius: 22px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -36,9 +31,7 @@
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
     .container {
       max-width: 1120px;
@@ -50,7 +43,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
@@ -88,9 +81,7 @@
       font-weight: 600;
     }
 
-    .nav a:hover {
-      color: var(--text);
-    }
+    .nav a:hover { color: var(--text); }
 
     .hero {
       padding: 72px 0 56px;
@@ -141,6 +132,8 @@
       font-weight: 700;
       text-decoration: none;
       transition: 0.2s ease;
+      cursor: pointer;
+      border: none;
     }
 
     .btn-primary {
@@ -149,9 +142,7 @@
       box-shadow: var(--shadow);
     }
 
-    .btn-primary:hover {
-      background: var(--primary-hover);
-    }
+    .btn-primary:hover { background: var(--primary-hover); }
 
     .btn-secondary {
       background: white;
@@ -159,9 +150,7 @@
       border: 1px solid var(--line);
     }
 
-    .btn-secondary:hover {
-      background: #f9fafb;
-    }
+    .btn-secondary:hover { background: #f9fafb; }
 
     .trust {
       margin-top: 24px;
@@ -177,9 +166,7 @@
       box-shadow: var(--shadow);
     }
 
-    .card + .card {
-      margin-top: 18px;
-    }
+    .card + .card { margin-top: 18px; }
 
     .card h3 {
       margin-top: 0;
@@ -201,9 +188,7 @@
       color: var(--muted);
     }
 
-    .mini-item strong {
-      color: var(--text);
-    }
+    .mini-item strong { color: var(--text); }
 
     .section {
       padding: 70px 0;
@@ -217,7 +202,7 @@
     }
 
     .section-intro {
-      max-width: 820px;
+      max-width: 860px;
       font-size: 19px;
       color: var(--muted);
       margin-bottom: 32px;
@@ -235,9 +220,7 @@
       color: var(--muted);
     }
 
-    .list li {
-      margin-bottom: 10px;
-    }
+    .list li { margin-bottom: 10px; }
 
     .price {
       font-size: 44px;
@@ -266,9 +249,7 @@
       color: rgba(255,255,255,0.84);
     }
 
-    .faq-item {
-      margin-bottom: 16px;
-    }
+    .faq-item { margin-bottom: 16px; }
 
     .faq-item h3 {
       margin: 0 0 8px;
@@ -278,6 +259,41 @@
     .faq-item p {
       margin: 0;
       color: var(--muted);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: white;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .helper {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 12px;
     }
 
     .contact-box {
@@ -333,17 +349,9 @@
         grid-template-columns: 1fr;
       }
 
-      .hero h2 {
-        font-size: 38px;
-      }
-
-      .section h2 {
-        font-size: 32px;
-      }
-
-      .nav {
-        display: none;
-      }
+      .hero h2 { font-size: 38px; }
+      .section h2 { font-size: 32px; }
+      .nav { display: none; }
     }
   </style>
 </head>
@@ -370,13 +378,13 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="pill">GCSE Maths available now • More subjects planned</div>
+          <div class="pill">Current offer: free percentages trial lesson</div>
           <h2>Affordable GCSE Maths support without the cost of weekly tutoring</h2>
           <p>
             Home Tutor Academy provides structured, step-by-step lessons that help students understand maths, build confidence, and improve exam performance — all from home.
           </p>
           <p>
-            It is powered by AI, which means students can ask questions freely, revisit explanations, and work through tricky steps without feeling judged or embarrassed.
+            It is powered by AI, which means students can ask questions freely, revisit explanations, and work through tricky steps without feeling judged or embarrassed for asking again.
           </p>
           <p>
             Lessons are fully interactive and can be used with either voice or text, making them flexible for different learners and different home setups.
@@ -385,7 +393,7 @@
             No technical knowledge is needed. All you need is a free ChatGPT account and a notebook for jottings and working out.
           </p>
           <div class="button-row">
-            <a class="btn btn-primary" href="#trial">Try the free lesson</a>
+            <a class="btn btn-primary" href="#trial">Get the free trial</a>
             <a class="btn btn-secondary" href="#pricing">View pricing</a>
           </div>
           <div class="trust">Created by a qualified teacher. Tested with real students.</div>
@@ -403,10 +411,10 @@
           </div>
 
           <div class="card dark">
-            <div class="label">Current offer</div>
+            <div class="label">Introductory offer</div>
             <h3>Free percentages trial lesson</h3>
             <p>
-              A focused GCSE Maths sample lesson designed to show how the full programme teaches, guides, and stretches students.
+              A focused GCSE Maths sample lesson designed to show how the full programme teaches, guides, stretches, and builds confidence.
             </p>
           </div>
         </div>
@@ -417,13 +425,65 @@
       <div class="container">
         <h2>Get the free trial lesson</h2>
         <p class="section-intro">
-          To access the free trial, parents need to email first. This allows us to collect basic contact details before sending over the trial lesson link.
+          To access the free trial, complete the short form below. Once submitted, you will be taken straight to the trial access page and the details will also be sent to us.
         </p>
         <p class="section-intro">
-          The free trial is designed to show exactly how Home Tutor Academy works. It is not just a worksheet or a short demo. It is a structured, interactive lesson that teaches clearly, guides students step by step, and shows how the full system builds understanding.
+          This is not just a worksheet or a quick demo. It is a structured, interactive lesson designed to show exactly how Home Tutor Academy works.
         </p>
 
         <div class="grid-2">
+          <div class="card">
+            <h3>Request free trial access</h3>
+
+            <form action="https://formsubmit.co/learn@hometutoracademy.co.uk" method="POST">
+              <input type="hidden" name="_subject" value="New Home Tutor Academy free trial request">
+              <input type="hidden" name="_next" value="https://hometutoracademy.co.uk/thanks.html">
+              <input type="hidden" name="_template" value="table">
+
+              <div class="form-grid">
+                <div>
+                  <label for="parent-name">Parent name</label>
+                  <input id="parent-name" type="text" name="Parent Name" required>
+                </div>
+
+                <div>
+                  <label for="email">Email address</label>
+                  <input id="email" type="email" name="Email" required>
+                </div>
+
+                <div>
+                  <label for="year-group">Child's school year</label>
+                  <input id="year-group" type="text" name="Year Group" placeholder="e.g. Year 10" required>
+                </div>
+
+                <div>
+                  <label for="need">Main area of need</label>
+                  <select id="need" name="Main Need" required>
+                    <option value="">Select one</option>
+                    <option>Confidence</option>
+                    <option>Weak number skills</option>
+                    <option>Exam technique</option>
+                    <option>Careless mistakes</option>
+                    <option>General GCSE Maths support</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="message">Anything useful for us to know?</label>
+                  <textarea id="message" name="Additional Notes" placeholder="Optional"></textarea>
+                </div>
+
+                <div>
+                  <button class="btn btn-primary" type="submit">Continue to free trial</button>
+                </div>
+              </div>
+            </form>
+
+            <div class="helper">
+              On your first test submission, FormSubmit will send a confirmation email to activate the form. After that, future submissions will come straight through. :contentReference[oaicite:2]{index=2}
+            </div>
+          </div>
+
           <div class="card">
             <h3>What the trial includes</h3>
             <ul class="list">
@@ -433,19 +493,6 @@
               <li>Independent questions with reasoning</li>
               <li>A proper sense of how the full programme works</li>
             </ul>
-            <div class="button-row">
-              <a class="btn btn-primary" href="mailto:simondavis1979@live.co.uk?subject=Free%20Trial%20Request%20-%20Home%20Tutor%20Academy">Request free trial by email</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Why start with the trial?</h3>
-            <p>
-              The trial gives families a chance to see whether the structure, teaching style, and level of support are a good fit before paying for the full programme.
-            </p>
-            <p>
-              It also shows the difference between random question practice and a properly sequenced lesson that explains, models, guides, and then checks understanding.
-            </p>
             <p>
               Because it is AI-powered, students can ask questions again, take their time, and work through uncertainty without the self-consciousness that sometimes comes with asking for repeated help.
             </p>
@@ -485,7 +532,7 @@
               <li>Future lesson expansion planned</li>
             </ul>
             <div class="button-row">
-              <a class="btn btn-secondary" href="mailto:simondavis1979@live.co.uk?subject=Home%20Tutor%20Academy%20-%20Full%20Programme">Buy the programme</a>
+              <a class="btn btn-secondary" href="mailto:learn@hometutoracademy.co.uk?subject=Home%20Tutor%20Academy%20-%20Full%20Programme">Buy the programme</a>
             </div>
           </div>
         </div>
@@ -572,8 +619,8 @@
           <div class="contact-grid">
             <div class="contact-card">
               <h3>Email</h3>
-              <a class="btn btn-secondary" href="mailto:simondavis1979@live.co.uk?subject=Home%20Tutor%20Academy%20Enquiry">Email Home Tutor Academy</a>
-              <div class="copy-email">simondavis1979@live.co.uk</div>
+              <a class="btn btn-secondary" href="mailto:learn@hometutoracademy.co.uk?subject=Home%20Tutor%20Academy%20Enquiry">Email Home Tutor Academy</a>
+              <div class="copy-email">learn@hometutoracademy.co.uk</div>
             </div>
 
             <div class="contact-card">
